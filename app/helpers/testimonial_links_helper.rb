@@ -1,0 +1,2 @@
+module TestimonialLinksHelper
+end
