@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :genres
   resources :locations
   resources :testimonial_links
   devise_for :users
