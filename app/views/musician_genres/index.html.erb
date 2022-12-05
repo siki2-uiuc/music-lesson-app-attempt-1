@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Musician Genres</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Genre</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @musician_genres.each do |musician_genre| %>
+      <tr>
+        <td><%= musician_genre.user_id %></td>
+        <td><%= musician_genre.genre_id %></td>
+        <td><%= link_to 'Show', musician_genre %></td>
+        <td><%= link_to 'Edit', edit_musician_genre_path(musician_genre) %></td>
+        <td><%= link_to 'Destroy', musician_genre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Musician Genre', new_musician_genre_path %>

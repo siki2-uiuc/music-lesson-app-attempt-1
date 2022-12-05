@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :musician_genres
   resources :genres
   resources :locations
   resources :testimonial_links
