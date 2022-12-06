@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Own level:</strong>
+  <%= @user_instrument.own_level_id %>
+</p>
+
+<p>
+  <strong>Min teaching level:</strong>
+  <%= @user_instrument.min_teaching_level_id %>
+</p>
+
+<p>
+  <strong>Max teaching level:</strong>
+  <%= @user_instrument.max_teaching_level_id %>
+</p>
+
+<p>
+  <strong>Instrument:</strong>
+  <%= @user_instrument.instrument_id %>
+</p>
+
+<p>
+  <strong>Musician:</strong>
+  <%= @user_instrument.musician_id %>
+</p>
+
+<p>
+  <strong>Years played:</strong>
+  <%= @user_instrument.years_played %>
+</p>
+
+<%= link_to 'Edit', edit_user_instrument_path(@user_instrument) %> |
+<%= link_to 'Back', user_instruments_path %>

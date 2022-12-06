@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  own_level: one
+  min_teaching_level: one
+  max_teaching_level: one
+  instrument: one
+  musician: one
+  years_played: 1
+
+two:
+  own_level: two
+  min_teaching_level: two
+  max_teaching_level: two
+  instrument: two
+  musician: two
+  years_played: 1
