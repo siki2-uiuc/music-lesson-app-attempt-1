@@ -8,6 +8,7 @@
 #  updated_at :datetime         not null
 #
 class Instrument < ApplicationRecord
+  validates :name, presence: true
 
   has_many :users, class_name: "UserInstrument", foreign_key: "instrument_id"
 end
