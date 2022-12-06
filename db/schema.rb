@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_05_222149) do
+ActiveRecord::Schema.define(version: 2022_12_06_161560) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -43,12 +43,35 @@ ActiveRecord::Schema.define(version: 2022_12_05_222149) do
     t.index ["user_id"], name: "index_musician_genres_on_user_id"
   end
 
+  create_table "proficiency_levels", force: :cascade do |t|
+    t.string "level", default: "beginner"
+    t.string "description", default: "less than 1 year of experience"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "testimonial_links", force: :cascade do |t|
     t.string "link_url"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_testimonial_links_on_user_id"
+  end
+
+  create_table "user_instruments", force: :cascade do |t|
+    t.bigint "own_level_id", null: false
+    t.bigint "min_teaching_level_id"
+    t.bigint "max_teaching_level_id"
+    t.bigint "instrument_id", null: false
+    t.bigint "musician_id", null: false
+    t.integer "years_played"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["instrument_id"], name: "index_user_instruments_on_instrument_id"
+    t.index ["max_teaching_level_id"], name: "index_user_instruments_on_max_teaching_level_id"
+    t.index ["min_teaching_level_id"], name: "index_user_instruments_on_min_teaching_level_id"
+    t.index ["musician_id"], name: "index_user_instruments_on_musician_id"
+    t.index ["own_level_id"], name: "index_user_instruments_on_own_level_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,4 +98,9 @@ ActiveRecord::Schema.define(version: 2022_12_05_222149) do
   add_foreign_key "musician_genres", "genres"
   add_foreign_key "musician_genres", "users"
   add_foreign_key "testimonial_links", "users"
+  add_foreign_key "user_instruments", "instruments"
+  add_foreign_key "user_instruments", "proficiency_levels", column: "max_teaching_level_id"
+  add_foreign_key "user_instruments", "proficiency_levels", column: "min_teaching_level_id"
+  add_foreign_key "user_instruments", "proficiency_levels", column: "own_level_id"
+  add_foreign_key "user_instruments", "users", column: "musician_id"
 end
