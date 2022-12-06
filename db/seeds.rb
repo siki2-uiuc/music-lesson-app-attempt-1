@@ -11,3 +11,9 @@ ProficiencyLevel.create(level: "novice", description: "1-2 years of experience")
 ProficiencyLevel.create(level: "intermediate", description: "3-5 years of experience")
 ProficiencyLevel.create(level: "proficient", description: "6-9 years of experience")
 ProficiencyLevel.create(level: "professional", description: "10+ years of experience")
+
+musical_genres = ["Blues", "Classical", "Country", "Dance/Electronic", "Folk/Acoustic", "Gospel", "Hip-Hop/Rap", "Jazz", "Latin", "Metal", "Pop", "R&B/Soul", "Rock", "World"]
+
+musical_genres.each do |genre|
+  Genre.create(name: genre)
+end

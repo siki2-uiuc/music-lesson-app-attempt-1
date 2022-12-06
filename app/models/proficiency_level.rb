@@ -10,5 +10,10 @@
 #
 class ProficiencyLevel < ApplicationRecord
 
-  enum level = { beginner: "beginner", novice: "novice", intermediate: "intermediate", proficient: "proficient", professional: "professional" }
+  enum level = { 
+    beginner: "beginner", 
+    novice: "novice", 
+    intermediate: "intermediate", 
+    proficient: "proficient", 
+    professional: "professional" }
 end
