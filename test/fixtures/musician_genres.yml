@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: musician_genres
+#
+#  id         :bigint           not null, primary key
+#  user_id    :bigint           not null
+#  genre_id   :bigint           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  user: one
+  genre: one
+
+two:
+  user: two
+  genre: two
