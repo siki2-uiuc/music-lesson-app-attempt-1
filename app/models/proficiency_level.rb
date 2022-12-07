@@ -9,4 +9,11 @@
 #  updated_at  :datetime         not null
 #
 class ProficiencyLevel < ApplicationRecord
+
+  enum level: { 
+    beginner: "beginner", 
+    novice: "novice", 
+    intermediate: "intermediate", 
+    proficient: "proficient", 
+    professional: "professional" }
 end

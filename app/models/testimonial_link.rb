@@ -9,5 +9,7 @@
 #  updated_at :datetime         not null
 #
 class TestimonialLink < ApplicationRecord
+  validates :link_url, presence: true
+  
   belongs_to :user
 end
