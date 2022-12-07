@@ -25,7 +25,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :username, presence: true, uniquness: true
+  validates :username, presence: true, uniqueness: true
          
   belongs_to :location
 

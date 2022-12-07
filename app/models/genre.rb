@@ -8,7 +8,7 @@
 #  updated_at :datetime         not null
 #
 class Genre < ApplicationRecord
-  validates :name, presence: true, uniquness: true
+  validates :name, presence: true, uniqueness: true
   
   has_many :musician_genres
 end
