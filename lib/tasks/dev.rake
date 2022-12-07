@@ -55,35 +55,36 @@ task sample_data: :environment do
   # end
 
   #Creating User Instrument sample data
-  users.each do |user|
-    UserInstrument.create!(
-      own_level_id: ProficiencyLevel.last.id,
-      min_teaching_level_id: ProficiencyLevel.first.id,
-      max_teaching_level_id: ProficiencyLevel.all.sample.id,
-      instrument_id: Instrument.all.sample.id,
-      musician_id: user.id,
-      years_played: rand(9) + 8
-    )
-  end
+  # users.each do |user|
+  #   UserInstrument.create!(
+  #     own_level_id: ProficiencyLevel.last.id,
+  #     min_teaching_level_id: ProficiencyLevel.first.id,
+  #     max_teaching_level_id: ProficiencyLevel.all.sample.id,
+  #     instrument_id: Instrument.all.sample.id,
+  #     musician_id: user.id,
+  #     years_played: rand(9) + 8
+  #   )
+  # end
 
   #Creating Testimonial Links sample data
-  # testimonial_links = [
-  #   "https://youtu.be/bvWRMAU6V-c",
-  #   "https://youtu.be/BxmSOTHVE8g",
-  #   "https://youtu.be/t7PhdiHItjw",
-  #   "https://youtu.be/25QyCxVkXwQ",
-  #   "https://youtu.be/6BH-Rxd-NBo",
-  #   "https://youtu.be/DQQRjFzB8gY",
-  #   "https://youtu.be/GibiNy4d4gc"
-  # ]
-  # users.each do |user|
-  #   rand(2).times do
-  #     user.testimonial_links.create(
-  #       user_id: user.id,
-  #       link_url: testimonial_links.sample
-  #     )
-  #   end
-  # end
+  TestimonialLink.destroy_all
+  testimonial_links = [
+    "https://youtu.be/bvWRMAU6V-c",
+    "https://youtu.be/BxmSOTHVE8g",
+    "https://youtu.be/t7PhdiHItjw",
+    "https://youtu.be/25QyCxVkXwQ",
+    "https://youtu.be/6BH-Rxd-NBo",
+    "https://youtu.be/DQQRjFzB8gY",
+    "https://youtu.be/GibiNy4d4gc"
+  ]
+  users.each do |user|
+    rand(1..3).times do
+      user.testimonial_links.create(
+        user_id: user.id,
+        link_url: testimonial_links.sample
+      )
+    end
+  end
 
   p "#{Location.count} locations have been created"
   p "#{User.count} users have been created"

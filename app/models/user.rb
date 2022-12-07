@@ -29,7 +29,7 @@ class User < ApplicationRecord
          
   belongs_to :location
 
-  has_many :musician_genres
+  has_many :musician_genres, dependent: :destroy
   has_many :testimonial_links
-  has_many :instruments
+  has_many :instruments, dependent: :destroy
 end
