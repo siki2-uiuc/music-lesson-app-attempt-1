@@ -15,5 +15,6 @@ class ProficiencyLevel < ApplicationRecord
     novice: "novice", 
     intermediate: "intermediate", 
     proficient: "proficient", 
-    professional: "professional" }
+    professional: "professional" 
+  }
 end

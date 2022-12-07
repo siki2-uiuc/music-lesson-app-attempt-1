@@ -8,7 +8,7 @@
 #  updated_at    :datetime         not null
 #
 class Location < ApplicationRecord
-  vaildates :location_name, presence: true
+  validates :location_name, presence: true
 
   has_many :users
 end
