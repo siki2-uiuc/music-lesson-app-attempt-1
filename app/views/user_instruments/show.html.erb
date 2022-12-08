@@ -29,6 +29,9 @@
   <strong>Years played:</strong>
   <%= @user_instrument.years_played %>
 </p>
-
+<% if current_user == @user_instrument.musician %>
+  
 <%= link_to 'Edit', edit_user_instrument_path(@user_instrument) %> |
+<%= link_to 'Destroy', @user_instrument, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <%= link_to 'Back', user_instruments_path %>
