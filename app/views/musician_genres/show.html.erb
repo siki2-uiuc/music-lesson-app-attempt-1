@@ -9,6 +9,9 @@
   <strong>Genre:</strong>
   <%= @musician_genre.genre_id %>
 </p>
-
+<% if current_user == @musician_genre.user %>
+  
 <%= link_to 'Edit', edit_musician_genre_path(@musician_genre) %> |
+<%= link_to 'Destroy', @musician_genre, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <%= link_to 'Back', musician_genres_path %>
