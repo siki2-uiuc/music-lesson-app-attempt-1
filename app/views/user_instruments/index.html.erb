@@ -18,7 +18,7 @@
   <tbody>
     <% @user_instruments.each do |user_instrument| %>
       <tr>
-        <td><%= user_instrument.own_level_id %></td>
+        <td><%= user_instrument.own_level.level%></td>
         <td><%= user_instrument.min_teaching_level_id %></td>
         <td><%= user_instrument.max_teaching_level_id %></td>
         <td><%= user_instrument.instrument_id %></td>
