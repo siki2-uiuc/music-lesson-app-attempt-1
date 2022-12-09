@@ -31,5 +31,8 @@ class User < ApplicationRecord
 
   has_many :musician_genres, dependent: :destroy
   has_many :testimonial_links
-  has_many :instruments, dependent: :destroy
+
+  has_many :user_instruments, foreign_key: "musician_id"
+
+  has_many :instruments, through: :user_instruments, source: :instrument, dependent: :destroy
 end
