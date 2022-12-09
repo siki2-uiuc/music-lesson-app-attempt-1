@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all.order({ :username => :asc }) 
+    @q = User.ransack(params[:q])
+    @users = @q.result(:distinct => true).includes(:genres, :location, :instruments)
+    # @users = User.all.order({ :username => :asc }) 
   end
 
   def show
