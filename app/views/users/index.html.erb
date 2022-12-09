@@ -5,20 +5,30 @@
 <%= search_form_for @q do |f| %>
   <p>Narrow results:</p>
 
+  <%# <div> %>
+    <%# <%= f.label :instruments_name_cont, "Search by instrument" %> 
+    <%# <%= f.text_field :instruments_name_cont, :placeholder => "Enter a few characters" %> 
+  <%# </div> %>
+
   <div>
-    <%= f.label :instruments_name_cont, "Search by instrument" %>
-    <%= f.text_field :instruments_name_cont, :placeholder => "Enter a few characters" %>
-  </div>
+  <%= f.label :instruments_name_eq, "Search by instrument" %>
+  <%= f.select :instruments_name_eq, options_from_collection_for_select(Instrument.all, :name, :name, @q.instruments_name_eq), { :include_blank => true } %>
+</div>
 
   <div>
     <%= f.label :location_location_name_cont, "Search by location" %>
     <%= f.text_field :location_location_name_cont, :placeholder => "i.e Chicago" %>
   </div>
 
+  <%# <div> %>
+    <%# <%= f.label :genres_name_cont, "Search by genre" %> 
+    <%# <%= f.text_field :genres_name_cont, :placeholder => "Classical" %> 
+  <%# </div> %>
+
   <div>
-    <%= f.label :genres_name_cont, "Search by genre" %>
-    <%= f.text_field :genres_name_cont, :placeholder => "Classical" %>
-  </div>
+  <%= f.label :genres_name_eq, "Search by genre" %>
+  <%= f.select :genres_name_eq, options_from_collection_for_select(Genre.all, :name, :name, @q.genres_name_eq), { :include_blank => true } %>
+</div>
 
   <%= f.submit :class => "btn btn-primary btn-block" %>
   
