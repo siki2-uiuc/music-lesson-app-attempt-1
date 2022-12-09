@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>User Instruments</h1>
+<h1>Teachers By Instruments</h1>
 
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Musician</th>
       <th>Instrument</th>
       <th>Years Played</th>
@@ -16,14 +17,15 @@
   </thead>
 
   <tbody>
-    <% @user_instruments.each do |user_instrument| %>
+    <% @user_instruments.each do |user| %>
       <tr>
-        <td><%= user_instrument.musician.username.capitalize %></td>
-        <td><%= user_instrument.instrument.name %></td>
-        <td><%= user_instrument.years_played %></td>
-        <td><%= user_instrument.min_teaching_level.level %></td>
-        <td><%= user_instrument.max_teaching_level.level %></td>
-        <td><%= link_to 'Show', user_instrument %></td>
+        <td><img src="<%= user.musician.avatar_url%>" alt=""></td>
+        <td><%= user.musician.username.capitalize %></td>
+        <td><%= user.instrument.name %></td>
+        <td><%= user.years_played %></td>
+        <td><%= user.min_teaching_level.level %></td>
+        <td><%= user.max_teaching_level.level %></td>
+        <td><%= link_to 'Show', user_path(user.musician.username) %></td>
       </tr>
     <% end %>
   </tbody>
