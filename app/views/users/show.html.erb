@@ -17,3 +17,14 @@
 <h2>Schedule Availibility & Pricing</h2>
 <p><%= @user.lesson_schedule%></p>
 <p><%= @user.lesson_pricing.to_s(:currency)%>/ 30-min lesson </p>
+
+<h2>Video Resume</h2>
+<div class="">
+  <% @user.testimonial_links.each do |video| %>
+    <div class="">
+      <iframe width="560" height="315"
+        src="<%= video.link_url%>">
+      </iframe>
+    </div>
+  <% end %>
+</div>

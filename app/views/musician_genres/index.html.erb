@@ -2,6 +2,21 @@
 
 <h1>Teachers By Genres</h1>
 
+<%= search_form_for @q do |f| %>
+  <p>Narrow results:</p>
+
+
+  <div>
+  <%= f.label :genre_name_eq, "Search by genre" %>
+  <%= f.select :genre_name_eq, options_from_collection_for_select(Genre.all, :name, :name, @q.genre_name_eq), { :include_blank => true } %>
+</div>
+
+  
+  <%= f.submit :class => "btn btn-primary btn-block" %>
+  
+  <a href="/">Clear filters</a>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -25,6 +40,3 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Musician Genre', new_musician_genre_path %>

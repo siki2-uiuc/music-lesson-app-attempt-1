@@ -3,7 +3,9 @@ class UserInstrumentsController < ApplicationController
 
   # GET /user_instruments or /user_instruments.json
   def index
-    @user_instruments = UserInstrument.all
+    @q = UserInstrument.ransack(params[:q])
+    @user_instruments = @q.result
+    # @user_instruments = UserInstrument.all
   end
 
   # GET /user_instruments/1 or /user_instruments/1.json
