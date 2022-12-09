@@ -2,6 +2,19 @@
 
 <h1>Teachers By Instruments</h1>
 
+<%= search_form_for @q do |f| %>
+  <p>Narrow results:</p>
+
+  <div>
+  <%= f.label :instrument_name_eq, "Search by instrument" %>
+  <%= f.select :instrument_name_eq, options_from_collection_for_select(Instrument.all, :name, :name, @q.instrument_name_eq), { :include_blank => true } %>
+</div>
+  
+  <%= f.submit :class => "btn btn-primary btn-block" %>
+  
+  <a href="/">Clear filters</a>
+<% end %>
+
 <table>
   <thead>
     <tr>
