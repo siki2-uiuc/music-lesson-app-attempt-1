@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   
   get ":username" => "users#show", as: :user
 
-  post "/request_form" => "users#email_request"
+  post "/:username/request_form" => "users#email_request"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

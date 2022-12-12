@@ -1,6 +1,6 @@
 <h2>Request a Lesson!</h2>
 
-<%= form_with url: "/request_form", method: :post do |form| %>
+<%= form_with url: "/#{@user.username}/request_form", method: :post do |form| %>
 
   <div>
     <%= form.label :sender_address, "Enter your email address:" %>
@@ -22,6 +22,6 @@
     <%= form.text_area :body, rows: 3 %>
   </div>
 
-  <%= form.button %>
+  <%= form.button "Send request" %>
  
 <% end %>
