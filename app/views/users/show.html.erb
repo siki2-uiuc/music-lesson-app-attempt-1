@@ -18,7 +18,13 @@
 <p><%= @user.lesson_schedule%></p>
 <p><%= @user.lesson_pricing.to_s(:currency)%>/ 30-min lesson </p>
 
+
 <h2>Video Resume</h2>
+<% if current_user == @user %>
+  <div>
+  <%= link_to "Add New Video", new_testimonial_link_path %>
+</div>
+<% end %>
 <div class="">
   <% @user.testimonial_links.each do |video| %>
     <div class="">
