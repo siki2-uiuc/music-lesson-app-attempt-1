@@ -8,4 +8,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by!(username: params.fetch(:username))
   end
+
+  def email_request
+    @user = User.find_by!(username: params.fetch(:username))
+
+    redirect_to user_path(@user.username)
+  end
 end

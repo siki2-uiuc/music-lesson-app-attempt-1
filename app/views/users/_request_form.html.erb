@@ -1,0 +1,27 @@
+<h2>Request a Lesson!</h2>
+
+<%= form_with url: "/request_form", method: :post do |form| %>
+
+  <div>
+    <%= form.label :sender_address, "Enter your email address:" %>
+    <%= form.email_field :sender_address %>
+  </div>
+
+  <div>
+    <%= form.label :recipient_address %>
+    <%= form.hidden_field :recipient_address, value: @user.email %>
+  </div>
+
+  <div>
+    <%= form.label :subject, "Subject" %>
+    <%= form.text_field :subject, placeholder: "Lesson Request"  %>
+  </div>
+
+  <div>
+    <%= form.label :body, "Message body" %>
+    <%= form.text_area :body, rows: 3 %>
+  </div>
+
+  <%= form.button %>
+ 
+<% end %>
