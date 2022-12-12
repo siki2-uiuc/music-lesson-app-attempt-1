@@ -8,4 +8,28 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by!(username: params.fetch(:username))
   end
+
+  def email_request
+    @user = User.find_by!(username: params.fetch(:username))
+    sender_email = params.fetch(:sender_address)
+    recipient_email = params.fetch(:recipient_address)
+    message_subject = params.fetch(:subject)
+    message_body = params.fetch(:body)
+
+    mg_key = ENV.fetch("MAILGUN_API_KEY")
+    mg_sending_domain = ENV.fetch("MAILGUN_SENDING_DOMAIN")
+    # personal_email = ENV.fetch("PERSONAL_EMAIL")
+    mg_client = Mailgun::Client.new(mg_key)
+
+    email_info = {
+      :from => sender_email,
+      :to => recipient_email,
+      :subject => message_subject,
+      :text => message_body
+    }
+
+    mg_client.send_message(mg_sending_domain, email_info)
+
+    redirect_to user_path(@user.username)
+  end
 end

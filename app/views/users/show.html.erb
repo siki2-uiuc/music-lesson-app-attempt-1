@@ -26,5 +26,13 @@
         src="<%= video.link_url%>">
       </iframe>
     </div>
+    <% if current_user == @user %>
+      <div>
+        <%= link_to "Edit link", edit_testimonial_link_path(video) %>
+        <%= link_to "Delete link", testimonial_link_path(video), method: :delete %>
+      </div>
+    <% end %>
   <% end %>
 </div>
+
+<%= render "users/request_form" %>

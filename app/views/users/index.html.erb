@@ -44,7 +44,7 @@
       <th>Name</th>
       <th>Instrument(s)</th>
       <th>Location</th>
-      <th>Lesson Price</th>
+      <th>Lesson Price / 30-min</th>
       <th>Teacher Details</th>
       <th colspan="3"></th>
     </tr>
@@ -61,7 +61,7 @@
             <% end  %>
           </td>
         <td><%= user.location.location_name %></td>
-        <td><%= user.lesson_pricing.to_s(:currency) %>/ 30-min lesson</td>
+        <td><%= user.lesson_pricing.to_s(:currency) %></td>
         <td><%= link_to 'Show', user_path(user.username) %></td>
       </tr>
     <% end %>
