@@ -2,7 +2,7 @@
 
 <h1>All Teachers</h1>
 
-<form class="border rounded border-dark border-bottom-0 p-2 my-4">
+<form class="border rounded border-dark border-bottom-0 p-4 my-4">
   <%= search_form_for @q do |f| %>
     <p class="fw-bold">Narrow results:</p>
   
@@ -32,7 +32,7 @@
       <%= f.text_field :location_location_name_cont, :placeholder => "i.e Chicago", class: "form-control" %>
     </div>
   
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary mt-2 mr-3" %>
   
     <%= link_to 'Clear filters', root_path%>
   <% end %>
