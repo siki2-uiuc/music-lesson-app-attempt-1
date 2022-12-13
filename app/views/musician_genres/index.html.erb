@@ -33,38 +33,38 @@
   <%# <tbody> %>
 
   <% @musician_genres.each do |musician_genre| %>
-  <div class="carb mb-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="<%= musician_genre.user.avatar_url %>" alt="">
-      </div>
-      <div class="col-md-8">
-        <div class="card-header d-flex justify-content-around">
-          <h4><%= musician_genre.user.username.capitalize%></h4>
-          <p class="card-text">
-            <span class="text-info">Location: </span><%= musician_genre.user.location.location_name %>
-          </p>
+    <div class="carb mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="<%= musician_genre.user.avatar_url %>" alt="">
         </div>
-        <div class="card-body">
-          <div class="h5">
-            <% musician_genre.user.instruments.each do |instrument| %>
-                      <span><%= instrument.name %></span>
-                  <% end  %>
-                  <span class="pt-4">Teacher </span>
+        <div class="col-md-8">
+          <div class="card-header d-flex justify-content-around">
+            <h4><%= musician_genre.user.username.capitalize%></h4>
+            <p class="card-text">
+              <span class="text-info">Location: </span><%= musician_genre.user.location.location_name %>
+            </p>
           </div>
-          <p class="card-text mt-3 h5"><span class="text-info">Genre:</span> <%= musician_genre.genre.name %>
+          <div class="card-body">
+            <div class="h5">
+              <% musician_genre.user.instruments.each do |instrument| %>
+                        <span><%= instrument.name %></span>
+                    <% end  %>
+                    <span class="pt-4">Teacher </span>
+            </div>
+            <p class="card-text mt-3 h5"><span class="text-info">Genre:</span> <%= musician_genre.genre.name %>
+            </p>
+            <div class="mt-3">
+              <p class="card-text h5"><span class="text-info">About me: </span><%= musician_genre.user.teacher_bio %></p>
+            </div>
+          <p class="card-text mt-3">
+            <%= link_to 'Show', user_path(musician_genre.user.username), class: "btn btn-primary" %>
           </p>
-          <div class="mt-3">
-            <p class="card-text h5"><span class="text-info">About me: </span><%= musician_genre.user.teacher_bio %></p>
           </div>
-        <p class="card-text mt-3">
-          <%= link_to 'Show', user_path(musician_genre.user.username), class: "btn btn-primary" %>
-        </p>
         </div>
       </div>
     </div>
-  </div>
-    <% end %>
+  <% end %>
   <%# </tbody> %>
 <%# </table> %>
 
