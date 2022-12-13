@@ -2,39 +2,41 @@
 
 <h1>All Teachers</h1>
 
-<%= search_form_for @q do |f| %>
-  <p>Narrow results:</p>
-
-  <%# <div> %>
-    <%# <%= f.label :instruments_name_cont, "Search by instrument" %> 
-    <%# <%= f.text_field :instruments_name_cont, :placeholder => "Enter a few characters" %> 
-  <%# </div> %>
-
-  <div>
-  <%= f.label :instruments_name_eq, "Search by instrument" %>
-  <%= f.select :instruments_name_eq, options_from_collection_for_select(Instrument.all, :name, :name, @q.instruments_name_eq), { :include_blank => true } %>
-</div>
-
-
-  <%# <div> %>
-    <%# <%= f.label :genres_name_cont, "Search by genre" %> 
-    <%# <%= f.text_field :genres_name_cont, :placeholder => "Classical" %> 
-  <%# </div> %>
-
-  <div>
-  <%= f.label :genres_name_eq, "Search by genre" %>
-  <%= f.select :genres_name_eq, options_from_collection_for_select(Genre.all, :name, :name, @q.genres_name_eq), { :include_blank => true } %>
-</div>
-
-  <div>
-    <%= f.label :location_location_name_cont, "Search by location" %>
-    <%= f.text_field :location_location_name_cont, :placeholder => "i.e Chicago" %>
-  </div>
+<form class="my-4">
+  <%= search_form_for @q do |f| %>
+    <p>Narrow results:</p>
   
-  <%= f.submit %>
+    <%# <div> %>
+      <%# <%= f.label :instruments_name_cont, "Search by instrument" %>
+      <%# <%= f.text_field :instruments_name_cont, :placeholder => "Enter a few characters" %>
+    <%# </div> %>
   
-  <a href="/">Clear filters</a>
-<% end %>
+    <div class="mb-2">
+      <%= f.label :instruments_name_eq, "Search by instrument", class: "form-label" %>
+      <%= f.select :instruments_name_eq, options_from_collection_for_select(Instrument.all, :name, :name, @q.instruments_name_eq), { :include_blank => true }, class: "form-control form-select" %>
+    </div>
+  
+  
+    <%# <div> %>
+      <%# <%= f.label :genres_name_cont, "Search by genre" %>
+      <%# <%= f.text_field :genres_name_cont, :placeholder => "Classical" %>
+    <%# </div> %>
+  
+    <div class="mb-2">
+      <%= f.label :genres_name_eq, "Search by genre", class: "form-label" %>
+      <%= f.select :genres_name_eq, options_from_collection_for_select(Genre.all, :name, :name, @q.genres_name_eq), { :include_blank => true }, class: "form-control form-select" %>
+    </div>
+  
+    <div class="mb-2">
+      <%= f.label :location_location_name_cont, "Search by location", class: "form-label" %>
+      <%= f.text_field :location_location_name_cont, :placeholder => "i.e Chicago", class: "form-control" %>
+    </div>
+  
+    <%= f.submit %>
+  
+    <%= link_to 'Clear filters', root_path%>
+  <% end %>
+</form>
 
 
 <table>
