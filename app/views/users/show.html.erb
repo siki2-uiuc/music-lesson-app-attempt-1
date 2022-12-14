@@ -1,7 +1,7 @@
 <div class="container d-flex flex-column">
   <div class="mb-4 d-flex flex-row border border-dark rounded-lg p-2">
     <div class="d-flex align-items-center">
-      <img src="<%= @user.avatar_url %>" alt="" class="border rounded-circle w-50 p-1">
+      <%= image_tag "#{@user.avatar_url}", class: "border rounded-circle w-25 h-75 p-1" %>
       <div class="pl-2">
         <h1><%= @user.username.capitalize %></h1>
         <div class="pt-1">
