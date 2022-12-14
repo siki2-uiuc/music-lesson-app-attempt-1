@@ -33,16 +33,16 @@
 
   <%# <tbody> %>
     <% @user_instruments.each do |user| %>
-    <div class="carb mb-3">
+    <div class="card mb-3">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="<%= user.musician.avatar_url %>" alt="">
+          <%= image_tag "#{user.musician.avatar_url}", class: "img-fluid rounded-start" %>
         </div>
         <div class="col-md-8">
           <div class="card-header d-flex justify-content-around">
-            <h4><%= user.musician.username.capitalize%></h4>
+            <h4 class="card-title fs-2"><%= user.musician.username.capitalize%></h4>
             <p class="card-text">
-              <span class="text-info">Location: </span><%= user.musician.location.location_name %>
+              <span class="text-info fs-5">Location: </span><%= user.musician.location.location_name %>
             </p>
           </div>
           <div class="card-body">
