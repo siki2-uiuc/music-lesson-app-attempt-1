@@ -18,12 +18,12 @@ class UsersController < ApplicationController
 
     mg_key = ENV.fetch("MAILGUN_API_KEY")
     mg_sending_domain = ENV.fetch("MAILGUN_SENDING_DOMAIN")
-    # personal_email = ENV.fetch("PERSONAL_EMAIL")
+    personal_email = ENV.fetch("PERSONAL_EMAIL")
     mg_client = Mailgun::Client.new(mg_key)
 
     email_info = {
       :from => sender_email,
-      :to => recipient_email,
+      :to => personal_email,
       :subject => message_subject,
       :text => message_body
     }
