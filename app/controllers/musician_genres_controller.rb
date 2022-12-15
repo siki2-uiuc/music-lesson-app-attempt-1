@@ -3,9 +3,10 @@ class MusicianGenresController < ApplicationController
 
   # GET /musician_genres or /musician_genres.json
   def index
-    @q = MusicianGenre.ransack(params[:q])
-    @musician_genres = @q.result(:distinct => true).includes(:genre)
+    @q = User.ransack(params[:q])
+    @users = @q.result(:distinct => true).includes(:genres)
     # @musician_genres = MusicianGenre.all
+    # @users = User.all
   end
 
   # GET /musician_genres/1 or /musician_genres/1.json

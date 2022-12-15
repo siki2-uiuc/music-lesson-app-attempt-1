@@ -1,80 +1,67 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Teachers By Instruments</h1>
-
-<form class="border rounded border-dark border-bottom-0 p-4 my-4">
-  <%= search_form_for @q do |f| %>
-    <p class="font-weight-bold">Narrow results:</p>
+<div class="pb-5">
   
-    <div class="mb-2">
-      <%= f.label :instrument_name_eq, "Search by instrument", class: "form-label" %>
-      <%= f.select :instrument_name_eq, options_from_collection_for_select(Instrument.all, :name, :name, @q.instrument_name_eq), { :include_blank => true }, class: "form-control form-select" %>
-    </div>
+  <h1>Teachers By Instruments</h1>
   
-    <%= f.submit class: "btn btn-primary" %>
+  <form class="border rounded border-white border-bottom-0 p-4 my-4">
+    <%= search_form_for @q do |f| %>
+      <p class="fw-bold fs-4">Narrow results:</p>
   
-    <a href="/">Clear filters</a>
-  <% end %>
-</form>
-
-<%# <table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Musician</th>
-      <th>Instrument</th>
-      <th>Years Played</th>
-      <th>Min teaching level</th>
-      <th>Max teaching level</th>
-      <th>Teacher Details</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead> %>
-
-  <%# <tbody> %>
-    <% @user_instruments.each do |user| %>
-    <div class="carb mb-3">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="<%= user.musician.avatar_url %>" alt="">
-        </div>
-        <div class="col-md-8">
-          <div class="card-header d-flex justify-content-around">
-            <h4><%= user.musician.username.capitalize%></h4>
-            <p class="card-text">
-              <span class="text-info">Location: </span><%= user.musician.location.location_name %>
-            </p>
+      <div class="mb-2">
+        <%= f.label :instrument_name_eq, "Search by instrument", class: "form-label" %>
+        <%= f.select :instrument_name_eq, options_from_collection_for_select(Instrument.all, :name, :name, @q.instrument_name_eq), { :include_blank => true }, class: "form-control form-select" %>
+      </div>
+  
+      <%= f.submit class: "btn btn-primary" %>
+  
+      <%= link_to 'Clear filters', user_instruments_path, class: "ms-3"%>
+    <% end %>
+  </form>
+  
+  <%# <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Musician</th>
+        <th>Instrument</th>
+        <th>Years Played</th>
+        <th>Min teaching level</th>
+        <th>Max teaching level</th>
+        <th>Teacher Details</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead> %>
+  
+    <%# <tbody> %>
+      <% @user_instruments.each do |user| %>
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <%= image_tag "#{user.musician.avatar_url}", class: "img-fluid rounded-start" %>
           </div>
-          <div class="card-body">
-            <div class="h5">
-              <% user.musician.instruments.each do |instrument| %>
-                        <span><%= instrument.name %></span>
-                    <% end  %>
-                    <span class="pt-4">Teacher </span>
+          <div class="col-md-8">
+            <div class="card-header d-flex justify-content-around">
+              <h4 class="card-title fs-2"><%= user.musician.username.capitalize%></h4>
+              <p class="card-text">
+                <span class="text-dark fs-5 fw-semibold">Location: </span><%= user.musician.location.location_name %>
+              </p>
             </div>
-            <p class="card-text mt-3 h5"><span class="text-info">Years Played: </span><%= user.years_played %></p>
-            <div class="mt-3">
-              <p class="card-text h5"><span class="text-info">About me: </span><%= user.musician.teacher_bio %></p>
+            <div class="card-body">
+              <div class="fs-5 fw-semibold">
+                <% user.musician.instruments.each do |instrument| %>
+                          <span><%= instrument.name %></span>
+                      <% end  %>
+                      <span class="pt-4 fs-5 fw-semibold">Teacher </span>
+              </div>
+              <p class="card-text mt-3"><span class="text-dark fs-5 fw-semibold">Years Played: </span><%= user.years_played %></p>
+              <div class="mt-3">
+                <p class="card-text"><span class="text-dark fs-5 fw-semibold">About me: </span><%= user.musician.teacher_bio %></p>
+              </div>
+            <p class="card-text mt-3">
+              <%= link_to 'Show', user_path(user.musician.username), class: "btn btn-primary" %>
+            </p>
             </div>
-          <p class="card-text mt-3">
-            <%= link_to 'Show', user_path(user.musician.username), class: "btn btn-primary" %>
-          </p>
           </div>
         </div>
       </div>
-    </div>
-    <% end %>
-
-      <tr>
-        <%# <td><img src="<%= user.musician.avatar_url%>" alt=""></td> %>
-        <%# <td><%= user.musician.username.capitalize %></td> %>
-        <%# <td><%= user.instrument.name %></td> %>
-        <%# <td><%= user.years_played %></td> %>
-        <%# <td><%= user.min_teaching_level.level %></td> %>
-        <%# <td><%= user.max_teaching_level.level %></td> %>
-        <%# <td><%= link_to 'Show', user_path(user.musician.username) %></td> %>
-      </tr>
-
-    
-  <%# </tbody>
-</table> %>
+      <% end %>
+</div>
