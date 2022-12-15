@@ -6,6 +6,7 @@ class MusicianGenresController < ApplicationController
     @q = MusicianGenre.ransack(params[:q])
     @musician_genres = @q.result(:distinct => true).includes(:genre)
     # @musician_genres = MusicianGenre.all
+    @users = User.all
   end
 
   # GET /musician_genres/1 or /musician_genres/1.json
